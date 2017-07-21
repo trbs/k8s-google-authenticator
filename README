@@ -1,0 +1,37 @@
+k8s-google-authenticator
+========================
+
+Install with:
+
+  $ pip install k8s-google-authenticator
+
+
+Prerequisites
+-------------
+
+Your Kubernetes cluster and Google account are setup to support authentication via OpenID Connector.
+
+See:
+  - https://kubernetes.io/docs/admin/authentication/#openid-connect-tokens
+  - https://developers.google.com/identity/sign-in/web/devconsole-project
+
+Usage
+-----
+
+Make sure your cluster is defined in your kube config file. (usually: ~/.kube/config)
+
+Take note of the client-id and client-secret from your Google API or secrets json file.
+
+Now run k8s-google-authenticator to login to google and retreive the tokens and setup your kubectl config.
+
+When using client-id and client-secret:
+
+  $ k8s-google-authenticator --client-id $client_id --client-secret $client_secret cluster_name
+
+When using the secrets json file:
+
+  $ k8s-google-authenticator -f /path/to/secrets.json cluster_name
+
+See help for more information:
+
+  $ k8s-google-authenticator -h
